@@ -1,17 +1,32 @@
 //
-//  LembreteModel.swift
+//  lembretemodel.swift
 //  lembretes
 //
-//  Created by iredefbmac_29 on 22/05/25.
+//  created by iredefbmac_29 on 22/05/25.
 //
 
 import Foundation
 
-class LembreteModel {
-    var date:Int
-    
-    
-    init(date dateInput: Int) {
+public struct LembreteModel {
+    // essenciais
+    public var enabled:Bool
+    public var date:Int
+    public let id:UUID
+
+    // descritivos
+    public var name:String
+    public var description:String
+
+    // toque & notifs
+    // TO-DO
+
+    // inicializador & destrutor
+    init(name nameInput: String, name descriptionInput: String, enabled isEnabled: Bool = true, date dateInput: Int) {
+        enabled = isEnabled
         date = dateInput
+        id = UUID()
+
+        name = nameInput
+        description = descriptionInput
     }
 }
