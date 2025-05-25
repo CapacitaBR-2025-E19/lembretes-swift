@@ -13,6 +13,20 @@ struct LembreteComponent: View {
     var date:Binding<Date>
     var isEnabled:Binding<Bool>
     
+    init(name: Binding<String>, description: Binding<String>, date: Binding<Date>, isEnabled: Binding<Bool>) {
+        self.name = name
+        self.description = description
+        self.date = date
+        self.isEnabled = isEnabled
+    } // Inicializador Padrão
+    
+    init(lembrete: LembreteModel) {
+        self.name = lembrete.$name
+        self.description = lembrete.$description
+        self.date = lembrete.$date
+        self.isEnabled = lembrete.$isEnabled
+    } // Inicializador Lembrete
+    
     var body: some View {
         // TO-DO:
         // Fazer as caixas expandirem junto ao texto, e junto as caixas contidas
@@ -60,7 +74,7 @@ struct LembreteComponent: View {
                     // Time Button Start
                     Button(
                         action:{
-                        
+                            // TO-DO
                         },
                         
                         label:{
@@ -83,7 +97,7 @@ struct LembreteComponent: View {
                     // Expand Button Start
                     Button(
                         action:{
-                            
+                            // TO-DO
                         },
                         label:{
                             ZStack {
