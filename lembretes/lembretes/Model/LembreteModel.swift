@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 public struct LembreteModel {
     // essenciais
-    public var enabled:Bool
-    public var date:Int
+    @State public var isEnabled:Bool
+    public var date:Date
     public let id:UUID
 
     // descritivos
@@ -21,8 +22,8 @@ public struct LembreteModel {
     // TO-DO
 
     // inicializador & destrutor
-    init(name nameInput: String, name descriptionInput: String, enabled isEnabled: Bool = true, date dateInput: Int) {
-        enabled = isEnabled
+    init(name nameInput: String, name descriptionInput: String, isEnabled enabled: Bool = true, date dateInput: Date) {
+        isEnabled = enabled
         date = dateInput
         id = UUID()
 

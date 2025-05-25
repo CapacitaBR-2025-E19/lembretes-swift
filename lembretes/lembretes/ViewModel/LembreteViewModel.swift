@@ -1,7 +1,7 @@
 import Foundation
 
 public class LembreteCRUD {
-    public var lembretes:[LembreteModel] = [LembreteModel]() // olhar no mac, testando as coisa ainda no vim tá dando erro
+    public var lembretes:[LembreteModel] = [LembreteModel]()
 
     init() {
         // quando a gente fazer persistencia puxar do save de lembretes lá
