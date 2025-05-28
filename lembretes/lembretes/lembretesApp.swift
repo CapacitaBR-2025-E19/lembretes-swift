@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct lembretesApp: App {
-    @State var lembreteManager:LembreteManager = LembreteManager()
     
     var body: some Scene {
         WindowGroup {

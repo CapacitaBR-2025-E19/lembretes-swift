@@ -8,61 +8,99 @@
 import SwiftUI
 
 struct CreationView: View {
+    @Binding var lembreteManager:LembreteManager
+    
+    @State var tempName:String = String()
+    @State var tempDesc:String = String()
+    @State var tempDate:Date = Date()
+    
     var body: some View {
-        // @Binding var lembreteManager:LembreteManager
-        
-        @State var tempName:String = ""
-        @State var tempDesc:String = ""
-        @State var tempDate:Date = Date()
-        
-        
-        
-        VStack(spacing: 0) {
-            // Inicio selecionador de nome
-            TextField("Nome", text: $tempName)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder(Color.white1, lineWidth: 2)
-                        .frame(height: 50)
-                        //.foregroundStyle(Color.gray)
-                        .padding(.horizontal, 10)
-                )
-                .labelsHidden()
-            // Fim selecionador de nome
+        VStack(alignment: .trailing) {
+            VStack(alignment: .leading, spacing: 0) {
+                // Inicio selecionador de nome
+                Text("Nome:")
+                    .padding(.horizontal, 20)
+                TextField("Nome", text: $tempName)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 20)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .strokeBorder(Color.white1, lineWidth: 2)
+                            .frame(height: 50)
+                            //.foregroundStyle(Color.gray)
+                            .padding(.horizontal, 10)
+                    )
+                    .labelsHidden()
+                // Fim selecionador de nome
+                
+                // Inicio selecionador de descrição
+                Text("Descrição:")
+                    .padding(.horizontal, 20)
+                TextField("Descrição", text: $tempDesc)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 20)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .strokeBorder(Color.white1, lineWidth: 2)
+                            .frame(height: 50)
+                            //.foregroundStyle(Color.gray)
+                            .padding(.horizontal, 10)
+                    )
+                    .labelsHidden()
+                // Fim selecionador de descrição
+                
+                // Inicio selecionador de data
+                Text("Data e Hora:")
+                    .padding(.horizontal, 20)
+                DatePicker("Selecionador de Data", selection: $tempDate)
+                    .padding(.horizontal, 15)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .strokeBorder(Color.white1, lineWidth: 2)
+                            .frame(height: 50)
+                            //.foregroundStyle(Color.gray)
+                            .padding(.horizontal, 10)
+                    )
+                    .labelsHidden()
+                // Fim selecionador de data
+            }
             
-            // Inicio selecionador de descrição
-            TextField("Descrição", text: $tempName)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder(Color.white1, lineWidth: 2)
-                        .frame(height: 50)
-                        //.foregroundStyle(Color.gray)
-                        .padding(.horizontal, 10)
-                )
-                .labelsHidden()
-            // Fim selecionador de descrição
+            // Espaçador Geral
+            Spacer()
             
-            // Inicio selecionador de data
-            DatePicker("Selecionador de Data", selection: $tempDate)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder(Color.white1, lineWidth: 2)
-                        .frame(height: 50)
-                        //.foregroundStyle(Color.gray)
-                        .padding(.horizontal, 15)
-                )
-                .labelsHidden()
-            // Fim selecionador de data
+            VStack(alignment: .trailing) {
+                // Inicio botão de criação
+                Button(
+                    action: {
+                        lembreteManager.createLembrete(name: tempName, description: tempDesc, date: tempDate)
+                        
+                        print()
+                        print()
+                        for lembrete in lembreteManager.lembretes {
+                            print(lembrete)
+                        }
+                    },
+                    label: {
+                        ZStack {
+                            Circle()
+                                .frame(width: 100)
+                                .foregroundStyle(Color.white2)
+                                .overlay(
+                                    Image(systemName: "plus.circle.fill")
+                                        .font(.system(size: 85, weight: .medium))
+                                        .foregroundStyle(Color.gray)
+                                )
+                                .padding(.horizontal, 30)
+                        }
+                    } )
+                // Fim do botão de criação
+            }
         }
     }
 }
 
 #Preview {
-    CreationView()
+    @State @Previewable var lembretething:LembreteManager = LembreteManager()
+    CreationView(lembreteManager: $lembretething)
 }

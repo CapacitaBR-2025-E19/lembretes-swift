@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var lembreteManager:LembreteManager = LembreteManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView{
+            MainView(lembreteManager: $lembreteManager)
+            CreationView(lembreteManager: $lembreteManager)
         }
-        .padding()
     }
 }
 
