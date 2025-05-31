@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             MainView(lembreteManager: $lembreteManager)
-            CreationView(lembreteManager: $lembreteManager)
         }
     }
 }

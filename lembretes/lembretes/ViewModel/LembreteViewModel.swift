@@ -1,6 +1,7 @@
 import Foundation
 
-public class LembreteManager {
+@Observable
+public class LembreteViewModel {
     public var lembretes:[LembreteModel] = [LembreteModel]()
 
     init() {
