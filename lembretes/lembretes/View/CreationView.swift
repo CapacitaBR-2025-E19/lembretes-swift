@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreationView: View {
-    @Binding var lembreteManager:LembreteManager
+    @Binding var lembreteViewModel:LembreteViewModel
     
     @State var tempName:String = String()
     @State var tempDesc:String = String()
@@ -73,11 +73,11 @@ struct CreationView: View {
                 // Inicio botão de criação
                 Button(
                     action: {
-                        lembreteManager.createLembrete(name: tempName, description: tempDesc, date: tempDate)
+                        lembreteViewModel.createLembrete(name: tempName, description: tempDesc, date: tempDate)
                         
                         print()
                         print()
-                        for lembrete in lembreteManager.lembretes {
+                        for lembrete in lembreteViewModel.lembretes {
                             print(lembrete)
                         }
                     },
@@ -101,6 +101,6 @@ struct CreationView: View {
 }
 
 #Preview {
-    @State @Previewable var lembretething:LembreteManager = LembreteManager()
-    CreationView(lembreteManager: $lembretething)
+    @State @Previewable var lembretething:LembreteViewModel = LembreteViewModel()
+    CreationView(lembreteViewModel: $lembretething)
 }

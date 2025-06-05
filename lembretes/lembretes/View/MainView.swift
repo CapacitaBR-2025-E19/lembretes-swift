@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
-    @Binding var lembreteManager:LembreteManager
+    @Binding var lembreteViewModel:LembreteViewModel
     
     var body: some View {
         
         // Vstack primário
         VStack{
-            ForEach(lembreteManager.lembretes, id: \.self.id) { lembrete in
+            ForEach(lembreteViewModel.lembretes, id: \.self.id) { lembrete in
                 LembreteComponent(lembrete: lembrete)
             }
 
             // Inicio do link pra view de criação
             NavigationLink(
-                destination: CreationView(lembreteManager: $lembreteManager),
+                destination: CreationView(lembreteViewModel: $lembreteViewModel),
                 label: {
                 Circle()
                 .frame(width: 100)
@@ -37,6 +37,6 @@ struct MainView: View {
 }
 
 #Preview {
-    @State @Previewable var lembretething:LembreteManager = LembreteManager()
-    MainView(lembreteManager: $lembretething)
+    @State @Previewable var lembretething:LembreteViewModel = LembreteViewModel()
+    MainView(lembreteViewModel: $lembretething)
 }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var lembreteManager:LembreteManager = LembreteManager()
+    @State var lembreteViewModel:LembreteViewModel = LembreteViewModel()
     
     var body: some View {
         NavigationView{
-            MainView(lembreteManager: $lembreteManager)
+            MainView(lembreteViewModel: $lembreteViewModel)
         }
     }
 }
